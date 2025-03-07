@@ -31,11 +31,15 @@
   <label for="5">密碼</label><br>
   <input type="password" id="5" name="5"><br>
   <label for="6">確認密碼</label><br>
-  <input type="password" id="6" name="6"><br>
-
-  <button type="submit" value>提交</button>
+  <input type="password" id="6" name="6"><br><br>
+  <label for="7">照片上傳</label><br>
+  <input type="file" id="7" name="7"><br><br>
+  <label for="8">介紹自己</label><br>
+  <textarea id="8" name="8"rows="4" cols="50"></textarea><br>
+  <button type="submit" value>註冊</button>
 </form> 
 
 
 </body>
 </html>
+
