@@ -1,0 +1,10 @@
+function countLetters(str) {
+    const lettermap = new Map()
+    for(const char of str){
+        if(char !== ""){
+            lettermap.set(char,(lettermap.get(char)|| 0)+1)
+        }
+    }
+    return lettermap
+}
+console.log(countLetters("banana"))
