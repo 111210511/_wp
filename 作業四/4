@@ -1,0 +1,12 @@
+function deepMerge(obj1, obj2) {
+    return Object.keys(obj2).reduce((result, key) => {
+      result[key] =
+        typeof obj2[key] === "object" && obj2[key] !== null && !Array.isArray(obj2[key])
+          ? deepMerge(result[key] || {}, obj2[key]) 
+          : obj2[key]; 
+      return result;
+    }, { ...obj1 });
+  }
+const obj1 = { a: 1, b: { x: 2, y: 3 } };
+const obj2 = { b: { y: 5, z: 6 }, c: 7 };
+console.log(deepMerge(obj1, obj2));
