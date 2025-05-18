@@ -1,0 +1,8 @@
+def classify_even_odd(numbers):
+    result = {'even': [], 'odd': []}
+    for n in numbers:
+        if n % 2 == 0:
+            result['even'].append(n)
+        else:
+            result['odd'].append(n)
+    return result
