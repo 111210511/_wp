@@ -1,0 +1,35 @@
+import { DB } from "https://deno.land/x/sqlite/mod.ts";
+
+const database = new DB("blog.db");
+
+database.execute(`
+  CREATE TABLE IF NOT EXISTS posts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time TEXT DEFAULT CURRENT_TIMESTAMP,
+    title TEXT,
+    body TEXT,
+    user TEXT
+  );
+`);
+
+const newPosts = [
+  ["First Post", "last year", "Everything is fine.", "Alice"],
+  ["Second Entry", "this year", "Unexpected meeting!", "Bob"],
+  ["Third Note", "this moon", "Terrible mood today.", "Eve"],
+];
+
+const insertPost = database.prepareQuery(
+  "INSERT INTO posts (title, time, body, user) VALUES (?, ?, ?, ?)"
+);
+for (const post of newPosts) {
+  insertPost.execute(post);
+}
+insertPost.finalize();
+
+console.log("=== 所有貼文 ===");
+const results = database.queryEntries("SELECT * FROM posts");
+for (const post of results) {
+  console.log(`[#${post.id}] (${post.time}) ${post.title} by ${post.user}: ${post.body}`);
+}
+
+database.close();
