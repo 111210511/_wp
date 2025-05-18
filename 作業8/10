@@ -1,0 +1,7 @@
+def summary(data):
+    for student in data:
+        name = student['name']
+        scores = student['scores']
+        total = sum(scores)
+        avg = round(total / len(scores), 1)
+        print(f"{name}: Total = {total}, Average = {avg}")
